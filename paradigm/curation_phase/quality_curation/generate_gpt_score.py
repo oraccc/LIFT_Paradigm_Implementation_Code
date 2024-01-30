@@ -99,6 +99,6 @@ if __name__ == "__main__":
         results = list(executor.map(process_single_item, range(len(data)), data))
     results.sort(key=lambda x: x[0])
 
-    with open("scores.txt", "w") as file:
+    with open("gpt_scores.txt", "w") as file:
         for item in results:
             file.write(f"{item[0]}\t{item[1]}\n")

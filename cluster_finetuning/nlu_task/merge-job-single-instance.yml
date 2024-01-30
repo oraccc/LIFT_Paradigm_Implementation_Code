@@ -1,0 +1,22 @@
+# Training job submission via AzureML CLI v2
+
+$schema: https://azuremlschemas.azureedge.net/latest/commandJob.schema.json
+
+command: >-
+  python merge_peft_adapters.py 
+  --datastore_path ${{outputs.datastore_path}}
+  --peft_model_path "path/to/lora/adpater/on/azure/storage/blob"
+  --merged_model_output_dir "path/to/save/merged/model/on/azure/storage/blob"
+
+experiment_name: DeepSpeed-Distributed-Training-Mistral-7B
+display_name: merging-finetuned-Mistral
+code: src
+environment: azureml:`your_environment_on_azureml`
+outputs:
+  datastore_path:
+    type: uri_folder
+    mode: rw_mount
+    path: azureml://subscriptions/xxxxx/resourcegroups/xxxxx/workspaces/xxxxx/datastores/xxxxx/paths/
+compute: azureml:`your_cluster_compute_on_azureml`
+resources:
+  instance_count: 1

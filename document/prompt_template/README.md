@@ -1,5 +1,7 @@
 ## GPT Prompt Templates in LIFT
 
+Replace the **curly bracketed {} content** with your own data.
+
 
 
 ### :clipboard: Dataset Expansion Prompt Template
